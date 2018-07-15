@@ -1,0 +1,21 @@
+Selenium WebDriver Practical Guide
+
+Locating WebElement :
+
+1. By.id()
+2. By.name()
+3. By.tagName()
+4. By.linkText()
+5. By.partialLinkText()
+6. By.xpath()
+7. By.cssSelector
+8. By.class()
+
+
+Basic Actions on WebElements :
+
+getAttribute()
+sendKeys()
+clear()
+submit()
+getCssValue()
