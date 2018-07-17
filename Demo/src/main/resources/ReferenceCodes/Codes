@@ -14,15 +14,97 @@ Locating WebElement :
 
 Basic Actions on WebElements :
 
-getAttribute()
-sendKeys()
-clear()
-submit()
-getCssValue()
-getLocation()
-getSize()
-getText()
-getTagName()
-isDisplayed()
-isEnabled()
-isSelected()
+1. getAttribute()
+2. sendKeys()
+3. clear()
+4. submit()
+5. getCssValue()
+6. getLocation() - Returns X and Y coordinates Point getLocation() PL
+7. getSize() - Dimension getSize()  SD
+8. getText()
+9. getTagName()
+10. isDisplayed()
+11. isEnabled()
+12. isSelected()
+
+Advanced interaction of WebDriver :
+Action , Build, Perform functions
+
+1. Ctrl key and multiple dropdown selection
+
+A. Add all actions to Action builder
+
+Actions builder = new Actions(driver);
+builder.KeysDown(Keys.CONTROL)
+.click(one).click(two).click(three).KeysUp(Keys.CONTROL);
+
+B. Generate Composite Action
+
+Action compositeAction = builder.build();
+
+C. Perform Composite Action
+
+compositeAction.perform();
+
+2. moveByOffset and left-click
+
+Actions builder = new Actions(driver);
+builder.moveByOffset(elm.getLocation().getX()+10, elm.getLocation().getY()+10).click();
+builder.perform();
+
+3. clickAndHold and Release
+
+Actions builder = new Actions(driver);
+builder.moveByOffset(10, 20)
+.clickAndHold().moveByOffset(30,50).perform();
+
+or
+
+builder.clickAndHold(Elm).moveByOffset(50, 70).perform();
+
+and
+
+builder.clickAndHold(Elm).moveByOffset(50, 70).release().perform();
+
+builder.clickAndHold(Elm).release(Elm2).perform();
+
+
+4. moveToElement Action
+
+Actions builder = new Actions(driver);
+
+builder.moveToElement(Elm).clickAndHold().moveByOffset(30, 40).perform();
+
+5. dragAndDropBy offset
+
+builder.dragAndDropBy(elm, 400, 500).perform();
+
+builder.dragAndDrop(src, trg).perform();
+
+6. doubleClick
+
+builder.moveToElement(elm).doubleClick().perform();
+
+builder.doubleClick(elm).perform();
+
+7. contextClick()
+
+builder.contextClick(elm).click(elm(Item4)).perform();
+
+builder.moveToElement(elm).contextClick().click(elm(Item 4)).perform();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
