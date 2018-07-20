@@ -93,8 +93,14 @@ builder.contextClick(elm).click(elm(Item4)).perform();
 
 builder.moveToElement(elm).contextClick().click(elm(Item 4)).perform();
 
+Features of Webdriver :
 
+1. Setting desired capabilities :
 
+Map dcPair = new HashMap();
+dcPair.put("takesScreenShot","true");
+DesiredCapabilities dc= new DesiredCapabilities(dcPair);
+WebDriver driver = new WebDriver(dc);
 
 
 
