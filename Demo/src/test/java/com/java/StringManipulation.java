@@ -31,7 +31,7 @@ public class StringManipulation {
 		}
 		System.out.println("Rest : "+rev);
 	}
-	/**
+	/***
 	 * STRING MEMORY ALLOCATION
 	 */
 	public static void stringComparator()
