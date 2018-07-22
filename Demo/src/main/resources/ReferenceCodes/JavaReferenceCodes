@@ -1,0 +1,55 @@
+Java Reference codes
+
+1. DataBase Connection
+
+try-catch: classNotFoundException
+Class.forName("Driver_Name");
+try-catch: SQLException
+Connection conn = DriverManager.getConncection(URL, username, password);
+Statement stmt = conn.createStatement();
+ResultSet rs = stmt.executeQuery("SQL Statement");
+rs.getString("column_name");
+rs.clocse();
+stmt.close();
+conn.close();
+finally block - if != null .close();
+
+2. Reading from HSSFWorkbook XLS, XSSFWorkbook XLSX
+
+HSSFWorkBook workbook = new HSSFWorkBook(new FileInputStream(new File("Path_to_file")));
+HSSFWorkSheet worksheet = workbook.getSheet("Name_of_sheet");
+int rowCount = worksheet.getLastRowNum();
+int columnCount = worksheet.getRow(0).getLastCellNum();
+
+HSSFRow row = worksheet.getRow("row_num");
+String cellValue = row.getCell("Cell_num").getStringCellValue();
+
+OR deprecated method
+
+Iterator <Row> Itr = worksheet.Iterator();
+while(Itr.hasNext())
+Row nxtRow = Iterator.next();
+Iterator <Cell> cellItr = nxtRow.cellIterator();
+while(cellItr.hasNext())
+Cell cell = cellIterator.next();
+switch(cell.getCellType())
+case Cell.CELL_TYPE_STRING; SOP;
+break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
