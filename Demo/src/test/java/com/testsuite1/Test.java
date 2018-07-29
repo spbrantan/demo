@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,15 +20,19 @@ public class Test {
 	SimpleDateFormat timeFormatter = new SimpleDateFormat("HHmmss"); 
 	Date date = new Date();  
 	
-public static void main(String[] args) {
+public static void main(String[] args) throws InterruptedException {
 	System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\lib\\chromedriver2.36.exe");
     driver = new ChromeDriver();
-    driver.get("http://google.com/");
+    driver.get("http://demo.guru99.com/test/guru99home/");
     driver.manage().window().maximize();
-    
-    Actions builder = new Actions(driver);
-    builder.moveByOffset(50, 70).click().build().perform();
-    
+    Thread.sleep(5000);
+/*    JavascriptExecutor execute = (JavascriptExecutor) driver;
+    for(int i =0; i<=5;i++){
+        execute.executeScript("window.scrollBy(0,1000)");
+    }*/
+    JavascriptExecutor js = (JavascriptExecutor) driver;
+    js.executeScript("arguments[0].scrollIntoView();", driver.findElement(By.linkText("Books to Read")));
+    js.executeScript("arguments[0].setAttribute('style', 'background : yellow; border : 2px solid red;');", driver.findElement(By.linkText("Books to Read")));
 }
 
 }

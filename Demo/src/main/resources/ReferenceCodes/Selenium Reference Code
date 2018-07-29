@@ -1,0 +1,15 @@
+Selenium reference codes
+
+JavascriptExecutor codes -
+
+import org.openqa.Selenium.JavascriptExecutor;
+
+1) //Scroll by pixel
+JavascriptExecutor js= (JavaScriptExecutor) driver;
+js.executeScript("window.scrollBy(0,1000)");
+
+2)//Scroll to Element
+js.executeScript("arguments[0].scrollIntoView();", driver.findElement(By.id("")));
+
+3)//Highlight Element
+js.executeScript("argument[0].setAttribute('style', .background : yellow ; border : 2px solid red;');", elm);

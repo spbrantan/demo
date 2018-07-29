@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Drag & Drop</title>
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+
+    <style>
+      body { font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif"; font-size: 62.5%; }
+      .column { width: 170px; float: left; padding-bottom: 100px; }
+      .pull-right { margin-left: 200px; }
+      .portlet { margin: 0 1em 1em 0; }
+      .portlet-header { margin: 0.3em; padding-bottom: 4px; padding-left: 0.2em; }
+      .portlet-header .ui-icon { float: right; }
+      .portlet-content { padding: 0.4em; }
+      .ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; height: 50px !important; }
+      .ui-sortable-placeholder * { visibility: hidden; }
+
+      #commands { padding: 10px; border-style: dotted; border-radius: 25px; }
+    </style>
+  </head>
+
+  <body>
+
+    <div id="command-options" class="column">
+      <div class="portlet">
+        <div class="portlet-header">Boot up</div>
+        <div class="portlet-content" contenteditable="true">Turn on, and get ready to perform actions.</div>
+      </div>
+      <div class="portlet">
+        <div class="portlet-header">Feed the fish</div>
+        <div class="portlet-content" contenteditable="true">Tend to the golden fish in the aquarium.</div>
+      </div>
+      <div class="portlet">
+        <div class="portlet-header">Fix the human issue</div>
+        <div class="portlet-content" contenteditable="true">...kill all human...</div>
+      </div>
+      <div class="portlet">
+        <div class="portlet-header">Seek & Destroy</div>
+        <div class="portlet-content" contenteditable="true">Actively seek competing robots and engage them in a death match.</div>
+      </div>
+      <div class="portlet">
+        <div class="portlet-header">Goto...</div>
+        <div class="portlet-content" contenteditable="true">go to... where?</div>
+      </div>
+      <div class="portlet">
+        <div class="portlet-header">Halt</div>
+        <div class="portlet-content" contenteditable="true">Halt its systems and turn off.</div>
+      </div>
+    </div>
+
+    <div id="commands" class="column">
+    </div>
+
+    <div class="column pull-right">
+      <h3>The robot will...</h3>
+      <ol id="log">
+      </ol>
+    </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+    <script>
+    $(function() {
+        function update_log(event, ui){
+            var log = $( '#log' );
+            log.empty();
+            $( '#commands .portlet-content' ).each( function(ix, command) {
+                log.append( $('<li>' + $(command).text() + '</li>') );
+            });
+        }
+
+        $( '#commands' ).sortable({
+            update: update_log,
+            create: update_log
+        });
+
+        $( '#command-options .portlet' ).draggable({
+            helper: 'clone',
+            handle: '.portlet-header',
+            connectToSortable: '#commands'
+        });
+
+        $( '.portlet' ).addClass( 'ui-widget ui-widget-content ui-helper-clearfix ui-corner-all' )
+            .find( '.portlet-header' )
+                .addClass( 'ui-widget-header ui-corner-all' )
+                .prepend( '<span class="ui-icon ui-icon-plusthick"></span>')
+                .end()
+            .find( '.portlet-content' );
+
+        $( '.portlet-header .ui-icon' ).click(function() {
+            $( this ).toggleClass( 'ui-icon-minusthick' ).toggleClass( 'ui-icon-plusthick' );
+            $( this ).parents( '.portlet:first' ).find( '.portlet-content' ).toggle();
+        });
+        $( '.portlet-content' ).toggle();
+
+        $( '.column.can-move' ).disableSelection();
+    });
+    </script>
+
+  </body>
+</html>

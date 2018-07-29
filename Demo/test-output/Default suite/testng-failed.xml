@@ -3,17 +3,17 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.testsuite1.HomePageTest">
+      <class name="com.testsuite1.Actions">
         <methods>
-          <include name="basicAjax"/>
           <include name="setup"/>
           <include name="afterMethod"/>
           <include name="beforeMethod"/>
+          <include name="dragAndDropTest"/>
           <include name="beforeTest"/>
           <include name="tearDown"/>
           <include name="afterTest"/>
         </methods>
-      </class> <!-- com.testsuite1.HomePageTest -->
+      </class> <!-- com.testsuite1.Actions -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
