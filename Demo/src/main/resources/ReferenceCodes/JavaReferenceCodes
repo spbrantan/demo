@@ -37,11 +37,17 @@ case Cell.CELL_TYPE_STRING; SOP;
 break;
 
 
+3. Rest Assured Code
+RestAssured.baseURI = "http://google.com";
+RequestSpecification request = RestAssured.given();
+JSONObject param= new JSONObject();
+param.put("Parameter","value");
+request.header("Content-Type", "application/json");
+request.body(param.toJSONString());
+Response response= request.post("/request");
 
-
-
-
-
+int statuscode = response.getStatusCode();
+string responsecode = response.jsonPath().get("SuccessCode`");
 
 
 
